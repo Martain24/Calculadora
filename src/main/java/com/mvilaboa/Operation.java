@@ -14,16 +14,16 @@ public enum Operation {
     }),
     EXPONENTIATE("**", (num1, num2) -> Math.pow(num1.doubleValue(), num2.doubleValue()));
 
-    private String simbol;
+    private String symbol;
     private BiFunction<Number, Number, Double> functionOperation;
 
-    private Operation(String simbol, BiFunction<Number, Number, Double> functionOperation) {
-        this.simbol = simbol;
+    private Operation(String symbol, BiFunction<Number, Number, Double> functionOperation) {
+        this.symbol = symbol;
         this.functionOperation = functionOperation;
     }
 
-    public String getSimbol() {
-        return this.simbol;
+    public String getSymbol() {
+        return this.symbol;
     }
 
     public Double calculate(Number num1, Number num2) {
@@ -31,16 +31,16 @@ public enum Operation {
     }
 
     public String getStringCalculation(Number num1, Number num2) {
-        return "%s %s %s = %s".formatted(num1, getSimbol(), num2, calculate(num1, num2));
+        return "%s %s %s = %s".formatted(num1, getSymbol(), num2, calculate(num1, num2));
     }
 
-    public static boolean isValidSimbol(String simbol) {
-        return Stream.of(Operation.values()).anyMatch(op -> op.getSimbol().equals(simbol));
+    public static boolean isValidSymbol(String symbol) {
+        return Stream.of(Operation.values()).anyMatch(op -> op.getSymbol().equals(symbol));
     }
 
-    public static Optional<Operation> getOperationFromSimbol(String simbol) {
+    public static Optional<Operation> getOperationFromSymbol(String symbol) {
         return Stream.of(Operation.values())
-                .filter(op -> op.getSimbol().equals(simbol))
+                .filter(op -> op.getSymbol().equals(symbol))
                 .findFirst();
     }
 }

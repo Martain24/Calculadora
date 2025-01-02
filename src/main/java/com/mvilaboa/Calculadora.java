@@ -34,7 +34,7 @@ public class Calculadora {
         Stream.of(Operation.values()).forEach(op -> {
             int indexOp = List.of(Operation.values()).indexOf(op) + 1;
             System.out.println(
-                "%s. Write '%s' to %s.".formatted(indexOp, op.getSimbol(), op.toString())
+                "%s. Enter '%s' to %s.".formatted(indexOp, op.getSymbol(), op.toString())
             );
         });
     }
@@ -44,11 +44,11 @@ public class Calculadora {
         showOperations();
         while (true) {
             System.out.print("-> ");
-            Optional<Operation> operationOpt = Operation.getOperationFromSimbol(
+            Optional<Operation> operationOpt = Operation.getOperationFromSymbol(
                 scanner.nextLine()
             );
             if (operationOpt.isPresent()) return operationOpt.get();
-            else System.out.println("== Please, write a valid simbol. ==");
+            else System.out.println("== Please, enter a valid symbol. ==");
 
         }
     }
